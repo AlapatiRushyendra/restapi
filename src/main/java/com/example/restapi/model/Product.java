@@ -3,7 +3,7 @@ package com.example.restapi.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "products")
+@Table(schema = "test",name = "products")
 public class Product {
 
     @Id
