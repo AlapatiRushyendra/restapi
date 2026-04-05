@@ -1,6 +1,9 @@
 package com.example.restapi.model;
 
 import jakarta.persistence.*;
+import java.util.List;
+import java.util.ArrayList;
+import jakarta.persistence.*;
 
 @Entity
 @Table(schema = "test",name = "products")
@@ -17,6 +20,9 @@ public class Product {
 
     @Column(nullable = false)
     private double price;
+    @OneToMany(mappedBy = "product", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Review> reviews = new ArrayList<>();
+
 
     public Product() {}
 
@@ -34,4 +40,6 @@ public class Product {
     public void setDescription(String d) { this.description = d; }
     public double getPrice() { return price; }
     public void setPrice(double price) { this.price = price; }
+    public List<Review> getReviews() { return reviews; }
+    public void setReviews(List<Review> r) { this.reviews = r; }
 }
